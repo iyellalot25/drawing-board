@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <section class="tools-board">
+      <div class="row">
+        <label class="title">Shapes</label>
+        <ul class="options">
+          <li class="option">
+            <img src="icons/rectangle.svg" alt="Rectangle Tool">
+            <span>Rectangle</span>
+          </li>
+          <li class="option">
+            <img src="icons/circle.svg" alt="Circle Tool">
+            <span>Circle</span>
+          </li>
+          <li class="option">
+            <img src="icons/triangle.svg" alt="Triangle Tool">
+            <span>Triangle</span>
+          </li>
+          <li class="option">
+            <input type="checkbox" id="fill-color">
+            <label for="fill-color">Fill Color</label>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="drawing-board"></section>
+  </div>
+</body>
+</html>
