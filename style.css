@@ -6,3 +6,71 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #4A98F7;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1050px;
+  gap : 10px;
+  padding: 10px;
+}
+
+section {
+  background: white;
+  border-radius: 7px;
+}
+
+.tools-board {
+  width: 210px;
+  padding: 15px 22px 0;
+}
+
+.tools-board .row {
+  margin-bottom: 20px;
+}
+
+.row .options {
+  list-style: none;
+  margin: 10px 0 0 5px;
+}
+
+.row .options .option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.option:hover img,
+.option.active img {
+  filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+
+.option:hover span,
+.option:hover label,
+.option.active span,
+.option.active label {
+  color: #4A98F7;
+}
+
+.option :where(span, label) {
+  color: #5A6168;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.option #fill-color {
+  height: 14px;
+  width: 14px;
+}
+
+.drawing-board {
+  flex: 1;
+}
