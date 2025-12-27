@@ -178,3 +178,8 @@ section {
 .drawing-board {
   flex: 1;
 }
+
+.drawing-board canvas {
+  width: 100%;
+  height: 100%;
+}
