@@ -5,7 +5,7 @@ const sizeSlider = document.getElementById('size-slider');
 const ctx = canvas.getContext("2d");
 const colorBtns = document.querySelectorAll('.colors .option');
 const colorPicker = document.getElementById('color-picker');
-cons
+const clearCanvas = document.querySelector('.clear-canvas');
 
 //global var with default val
 let prevMouseX, prevMouseY, snapshot;
@@ -98,4 +98,8 @@ colorBtns.forEach((btn) => {
 colorPicker.addEventListener('change', () => {
   colorPicker.parentElement.style.background = colorPicker.value;
   selectedColor = colorPicker.value;
-})
+});
+
+clearCanvas.addEventListener('click', () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); ;// clearing whole canvas
+});
