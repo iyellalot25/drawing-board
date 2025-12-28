@@ -6,6 +6,7 @@ const ctx = canvas.getContext("2d");
 const colorBtns = document.querySelectorAll('.colors .option');
 const colorPicker = document.getElementById('color-picker');
 const clearCanvas = document.querySelector('.clear-canvas');
+const saveImg = document.querySelector('.save-img');
 
 //global var with default val
 let prevMouseX, prevMouseY, snapshot;
@@ -103,3 +104,10 @@ colorPicker.addEventListener('change', () => {
 clearCanvas.addEventListener('click', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); ;// clearing whole canvas
 });
+
+saveImg.addEventListener('click', () => {
+  const link = document.createElement("a"); //create <a>
+  link.download = `${Date.now()}.jpg`;
+  link.href = canvas.toDataURL();
+  link.click();
+})
