@@ -106,8 +106,18 @@ clearCanvas.addEventListener('click', () => {
 });
 
 saveImg.addEventListener('click', () => {
+  // Create a temporary canvas with white background
+  const tempCanvas = document.createElement('canvas');
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+  tempCtx.fillStyle = '#ffffff';
+  tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+  // Draw the original canvas content onto the white background
+  tempCtx.drawImage(canvas, 0, 0);
+
   const link = document.createElement("a"); //create <a>
   link.download = `${Date.now()}.jpg`;
-  link.href = canvas.toDataURL();
+  link.href = tempCanvas.toDataURL('image/jpeg', 1.0);
   link.click();
 })
