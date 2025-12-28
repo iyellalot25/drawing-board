@@ -54,4 +54,3 @@ Frontend-only learning project focused on mastering JavaScript fundamentals and 
 - Undo / redo functionality
 - Keyboard shortcuts
 - Save drawings to local storage
-```
