@@ -33,16 +33,32 @@ canvas.addEventListener('mousemove', (e) => {
   if(selectedTool === 'brush') {
     ctx.lineTo(e.offsetX, e.offsetY); //creating line according to mouse coordinates
     ctx.stroke();  //drawing/fillng line with color
+
   } else if(selectedTool === 'rectangle') {
     const width = prevMouseX - e.offsetX;
     const height =  prevMouseY - e.offsetY;
     fillColor.checked ? ctx.fillRect(e.offsetX, e.offsetY, width, height) : ctx.strokeRect(e.offsetX, e.offsetY, width, height);
+
   } else if(selectedTool === 'circle') {
     ctx.beginPath(); //resetting path so that repeated circles dont form
     //calculating radius according to mouseptr
     let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX), 2) + Math.pow((prevMouseY - e.offsetY), 2));
     ctx.arc(prevMouseX, prevMouseY, radius, 0, 2*Math.PI);
     fillColor.checked ? ctx.fill() : ctx.stroke();
+
+  } else if(selectedTool === 'triangle') {
+    ctx.beginPath(); //resetting so that overlapping triangles do not form
+    ctx.moveTo(prevMouseX, prevMouseY); //moving triangle to mouseptr
+    ctx.lineTo(e.offsetX, e.offsetY); //creating the first line according to the mouseptr
+    ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); //creating bottom line of triangle
+    ctx.closePath(); //closing the path of the triangle so the third line forms automatically
+    fillColor.checked ? ctx.fill() : ctx.stroke();
+  
+  } else if(selectedTool === 'line') {
+    ctx.beginPath(); //resetting so that overlapping lines do not form
+    ctx.moveTo(prevMouseX, prevMouseY); //moving line to mouseptr
+    ctx.lineTo(e.offsetX, e.offsetY); //creating the line according to the mouseptr
+    ctx.stroke();
   }
 });
 
