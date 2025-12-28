@@ -1,13 +1,17 @@
 const canvas = document.querySelector("canvas");
 const toolBtns = document.querySelectorAll(".tool");
 const fillColor = document.getElementById('fill-color');
+const sizeSlider = document.getElementById('size-slider');
 const ctx = canvas.getContext("2d");
+const colorBtns = document.querySelectorAll('.colors .option');
+const colorPicker = document.getElementById('color-picker');
 
 //global var with default val
 let prevMouseX, prevMouseY, snapshot;
 let isDrawing = false;
 let selectedTool = "brush";
 let brushWidth = 5;
+let selectedColor = '#000';
 
 window.addEventListener('load', () => {
   canvas.width = canvas.offsetWidth;
@@ -21,6 +25,8 @@ canvas.addEventListener('mousedown', (e) => {
   prevMouseY = e.offsetY;
   ctx.beginPath(); //Everytime mousedown new path not continue from prev path
   ctx.lineWidth = brushWidth;
+  ctx.fillStyle = selectedColor;
+  ctx.strokeStyle = selectedColor;
   //copying canvas data and passing as snapshot value this avoids the dragging effect
   snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 });
@@ -74,3 +80,20 @@ toolBtns.forEach((btn) => {
     selectedTool = btn.id;
   });
 });
+
+sizeSlider.addEventListener('change', () => {
+  brushWidth = sizeSlider.value;
+});
+
+colorBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.options .selected').classList.remove('selected'); //removing active from current active btn before adding it to clicked btn
+    btn.classList.add('selected');
+    selectedColor = window.getComputedStyle(btn).getPropertyValue("background-color");
+  });
+});
+
+colorPicker.addEventListener('change', () => {
+  colorPicker.parentElement.style.background = colorPicker.value;
+  selectedColor = colorPicker.value;
+})

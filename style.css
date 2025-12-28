@@ -98,24 +98,24 @@ section {
 }
 
 .colors .option:nth-child(1) {
-  background: white;
+  background-color: white;
   border: 1px solid #bfbfbf;
 }
 
 .colors .option:nth-child(2) {
-  background: black;
+  background-color: black;
 }
 
 .colors .option:nth-child(3) {
-  background: red;
+  background-color: red;
 }
 
 .colors .option:nth-child(4) {
-  background:#6DD400;
+  background-color:#6DD400;
 }
 
 .colors .option:nth-child(5) {
-  background: #4A98F7;
+  background-color: #4A98F7;
 }
 
 .colors .option.selected::before{
@@ -133,6 +133,41 @@ section {
 
 .colors .option:first-child.selected::before {
   border-color: #ccc;
+}
+
+.colors .picker {
+  height: 20px;
+  width: 20px;
+  margin-top: 3px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px; /* Square instead of circle */
+  background: 
+    /* Create a simple palette icon with gradients */
+    linear-gradient(45deg, 
+      #FF0000 25%, #00FF00 25%, #00FF00 50%,
+      #0000FF 50%, #0000FF 75%, #FFFF00 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+}
+
+.picker::before {
+  content: "🎨";
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+.option #color-picker,
+.picker #color-picker {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .option #color-picker{
