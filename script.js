@@ -5,6 +5,7 @@ const sizeSlider = document.getElementById('size-slider');
 const ctx = canvas.getContext("2d");
 const colorBtns = document.querySelectorAll('.colors .option');
 const colorPicker = document.getElementById('color-picker');
+cons
 
 //global var with default val
 let prevMouseX, prevMouseY, snapshot;
@@ -36,7 +37,8 @@ canvas.addEventListener('mousemove', (e) => {
   if(!isDrawing) return; //immediately return dont draw
   ctx.putImageData(snapshot, 0, 0); //adding copied snapshot to current canvas
 
-  if(selectedTool === 'brush') {
+  if(selectedTool === 'brush' || selectedTool === 'eraser') {
+    ctx.strokeStyle = selectedTool === 'eraser' ? '#fff' : selectedColor;
     ctx.lineTo(e.offsetX, e.offsetY); //creating line according to mouse coordinates
     ctx.stroke();  //drawing/fillng line with color
 
